@@ -7,13 +7,42 @@
     <title>Document</title>
     <script type="text/javascript">
     //Vamos a generar un número aleatorio entre 0 y 10
-    function generarNumero() {
-        var aleatorio = Math.random()*10;
-        alert("Número aleatorio entre 0 y 10:"+aleatorio);
+    function juegoNumero() {
+        var numeroAleatorio = Math.round(Math.random()*100-1);
+        console.log(numeroAleatorio)
     }
     function diTuNumero(){
 
     }
+
+
+
+
+
+
+window.onload = tombola;
+function tombola()
+{
+   var numerorandom = Math.round(Math.random()*100-1);
+   console.log(numerorandom);
+   var contador = 0
+   do{
+       var contador = contador + 1;
+       var numero = prompt("Dime un numero");
+           if (numero == numerorandom){
+           alert ("has ganado veintiochomil millones de euros campeon");
+       }
+           else if (numero > numerorandom){
+           alert ("QUE EL NUMERO ES MAS PEQUEÑO INCOMPETENTE");
+       }
+           else if (numero < numerorandom){
+           alert ("QUE EL NUMERO ES MAS GRANDE INCOMPETENTE");
+       }
+   }
+   while (contador <= 5 && numero != numerorandom)
+   alert ("SE ACABO EL JUEGO");
+}
+
 
     </script>
 </head>
@@ -35,3 +64,5 @@
          <input type="text" name="" id="aleatorio" size="10" maxlength="15">
 </body>
 </html>
+
+
