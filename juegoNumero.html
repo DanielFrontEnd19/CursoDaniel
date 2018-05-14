@@ -5,14 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script>
-    // Retorna un número aleatorio entre min (incluido) y max (excluido)
-    function getRandomArbitrary(min, max) {
-    return Math.random() * (max - min) + min;
-}
+    <script type="text/javascript">
+    //Vamos a generar un número aleatorio entre 0 y 10
+    function generarNumero() {
+        var aleatorio = Math.random()*10;
+        alert("Número aleatorio entre 0 y 10:"+aleatorio);
+    }
+    function diTuNumero(){
+
+    }
+
     </script>
 </head>
 <body>
-    
+    <form name="f1" id="f1" action="">
+        <!--enmarcamos el espacio del juego-->
+        <fieldset>
+        <!--le damos un nombre al marco-->
+        <legend>Adivina el número secreto entre el 0 y el 10</legend>
+         <p>Introduce el número que estas pensando:
+         <!--definimos una caja donde introducir el número pensado-->
+         <input type="number" name="numero" id="numero" size="3" maxlength="4">
+         </p>
+         <!--definimos un boton que hara la llamada a la funcion para averiguar el numero secreto-->
+         <input type="button" value="Dinos que número estás pensnado" onclick="generarNumero()">
+         </p>
+         <p> El número es...:
+         <!--definimos una caja donde la funcion devolvera un mensaje de error o de éxito-->
+         <input type="text" name="" id="aleatorio" size="10" maxlength="15">
 </body>
 </html>
