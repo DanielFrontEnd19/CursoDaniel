@@ -6,12 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script type="text/javascript">
-    //Vamos a generar un número aleatorio entre 0 y 10
-    function juegoNumero() {
-        var numeroAleatorio = Math.round(Math.random()*100-1);
-        console.log(numeroAleatorio)
+    const LIMITE_INFERIOR
+    const LIMITE_SUPERIOR
+    const NUMERO_VIDAS = 5;
+    window.onload = inicio;
+    //Vamos a generar un número aleatorio entre 0 y 100
+    /** 
+    Funcionalidad
+    Entrada
+    Salida
+    Precondiciones- Supongo que el límite infeior es menor que el limite superior
+    Postcondiciones
+    **/
+    function juegoNumero(limite_inferior, limite_superior) {
+        var numeroAleatorio = 0;
+        var n1 = Math.random(); //entre 0 y 1
+        (n1 * (limite_superior-limite_inferior + 1)) + limite_inferior;
+        numeroAleatorio = Math.ceil (numeroAleatorio); //redondeo    
+        return numeroAleatorio; 
     }
-    function diTuNumero(){
+    function inicio(){
+var numeroAleatorio = juegoNumero();
+console.log ("Numero aleatorio generado =" + numeroAleatorio)
+var 
+
 
     }
 

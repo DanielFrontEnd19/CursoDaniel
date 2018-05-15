@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+        //Lo primero será definir la función
+        function calcularIMC()
+        {
+        //Es el momento de adjuntar las variables
+            var peso, altura, imc, leyenda;
+        //hacemos la llamada a los datos introducidos
+            peso=document.getElementById("peso").value;
+            altura=document.getElementById("altura").value/100;
+        //ahora hay que calcular el imc    
+            imc=peso/(altura*altura);
+        //ahora hay que enviar el resultado a la caja correspondiente 
+            document.getElementById("imc").value=imc.toFixed(2);
+        //Ahora vamos a poner los los valores nominales y los comparamos mediante if
+        if (imc<16){
+        }
+        leyenda="Estas desnutrido. Debes acudir a tu médico y engordar" + (peso-altura*altura*16).toFixed(1) + "kilos";
+        
+        //Ahora hay que enviar el comentario de leyenda a su caja correspondiente
+        document.getElementById("leyenda").value=leyenda;
+    }
+    </script>
+</head>
+<body>
+        <form name="f1" id="f1" action="">
+                <!--enmarcamos el formulario-->
+                <fieldset>
+                <!--le damos un nombre al marco-->
+                <legend>CALCULO DEL PESO IDEAL IMC (Indice de Masa Corporal)</legend>
+                 <p>Peso en kg.:
+                 <!--definimos una caja donde introducir el dato del peso-->
+                 <input type="text" name="peso" id="peso" size="3" maxlength="4">
+                 </p>
+                 <p>Altura en cm.:
+                 <!--definimos una caja donde introducir el dato de la altura-->
+                 <input type="text" name="altura" id="altura" size="3" maxlength="3">
+                 <!--definimos un boton que hara la llamada a la funcion para calcular el imc-->
+                 <input type="button" value="Calcular IMC" onClick="calcularIMC()">
+                 </p>
+                 <p> IMC:
+                 <!--definimos una caja donde la funcion devolvera el valor de imc calculado-->
+                 <input type="text" name="imc" id="imc" size="10" maxlength="15">
+                 Leyenda:
+ <!--definimos una caja donde la funcion escribira el comentario, definido en leyenda-->
+ <input type="text" name="leyenda" id="leyenda" size="42">
+ </p>
+</body>
+</html>
