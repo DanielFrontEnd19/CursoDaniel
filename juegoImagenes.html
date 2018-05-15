@@ -1,58 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script>
-    onload = inicia;
-var imagen_tocado = false;
-function inicia() {
-    var td_actual;
-    var imagen;
-    var imagen_tocado;
-    var lista_table = document.querySelectorAll("td");
-    for (var i = 0; i < lista_table.length; i++) {
-    td_actual = lista_table[i];
-lista_table[i].addEventListener('click', ocultaMuestra);
-imagen = td_actual.firstElementChild;
-imagen.style.visibility="hidden";
-  }
-}
 
-function ocultaMuestra(evento) {
-  //target, es el elemento tocado
-  //currentTarget, es el elemento contenedor
-  var img_tocado = evento.currentTarget.firstElementChild;
-  var estilo = img_tocado.style.visibility;
-  if (estilo == 'visible' || estilo == '') {
-    img_tocado.style.visibility = 'hidden';
-  }
-  else {
-    img_tocado.style.visibility = 'visible';
-  }
-}
-    </script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    var imagen_tocado;//para guardar que imagen tocan con el puntero del raton
+    onload = inicia;
+    function inicia() {
+      var td_actual;
+      var imagen;
+      var imagen_tocado;
+      var lista_table = document.querySelectorAll("td");
+      for (var i = 0; i < lista_table.length; i++) {
+        td_actual = lista_table[i];
+        lista_table[i].addEventListener('click', ocultaMuestra);
+        imagen = td_actual.firstElementChild;
+        imagen.style.visibility = "hidden";
+      }
+    }
+
+    function ocultaMuestra(evento) {
+      //target, es el elemento tocado
+      //currentTarget, es el elemento contenedor
+      var imagen_tocado = evento.currentTarget.firstElementChild;
+      var estilo = imagen_tocado.style.visibility;
+      if (estilo == 'visible' || estilo == '') {
+        imagen_tocado.style.visibility = 'hidden';
+      }
+      else {
+        imagen_tocado.style.visibility = 'visible';
+      }
+    }
+    if (!imagen_tocado) {//la imagen tocada == false
+      alert("es la primera imagen tocada");
+      //TODO
+      //1 obtener la imagen tocada
+      //2 cambiar la visibilidad a visible
+      //3 guardar ese elemento en elemento_imagen_tocado
+    }
+    else{
+      alert ("es la segunda imagen tocada");
+    }
+    imagen_tocado = !imagen_tocado;
+  </script>
 </head>
+
 <body>
-    <table border= "1px">
-        <tr>
-          <td><img src="img/aparece.jpg" style="width: 300px";"display:none" ></td>
-          <td><img src="img/corre.jpg"style="width: 300px"></td> 
-        </tr>
-        <tr>
-          <td><img src="img/rosquilla.png"style="width: 300px"></td>
-          <td><img src="img/contento.jpeg"style="width: 300px"></td>
-        </tr>
-        <tr>
-            <td><img src="img/aparece.jpg" style="width: 300px"></td>
-            <td><img src="img/corre.jpg"style="width: 300px"></td> 
-          </tr>
-          <tr>
-            <td><img src="img/rosquilla.png"style="width: 300px"></td>
-            <td><img src="img/contento.jpeg"style="width: 300px"></td>
-          </tr>
-      </table>
+  <table border="1px">
+    <tr>
+      <td>
+        <img src="img/aparece.jpg" style="width: 300px" ; "display:none">
+      </td>
+      <td>
+        <img src="img/corre.jpg" style="width: 300px">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img src="img/rosquilla.png" style="width: 300px">
+      </td>
+      <td>
+        <img src="img/contento.jpeg" style="width: 300px">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img src="img/aparece.jpg" style="width: 300px">
+      </td>
+      <td>
+        <img src="img/corre.jpg" style="width: 300px">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img src="img/rosquilla.png" style="width: 300px">
+      </td>
+      <td>
+        <img src="img/contento.jpeg" style="width: 300px">
+      </td>
+    </tr>
+  </table>
 </body>
+
 </html>
