@@ -7,14 +7,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script>
+        //Lo primero es declarar las variables
         var numero1, numero2, numero3;
+        //Generar las ventanas de alerta para ingresar los numeros de cada una de las varibles
+        //Para ello usamos prompt
         numero1 = prompt('Ingrese el primer número:', "");
         numero2 = prompt('Ingrese el segundo número:', "");
         numero3 = prompt('Ingrese el tercer número:', "");
-        numero1 = parseInt(numero1);
+        //Si queremos que los numeros sean enteros usamos parseInt, sino lo omitimos para que puedan coger numeros decimales
+        /*numero1 = parseInt(numero1);
         numero2 = parseInt(numero2);
-        numero3 = parseInt(numero3);
-        if (numero1 > numero2 && numero1 > numero3) {
+        numero3 = parseInt(numero3);*/
+        //Comenzamos hacer la comparación entre los números introducidos
+        if (numero1 > numero2 && numero1 > numero3) { 
             document.write('el número más alto es el ' + numero1);
         }
         else {
@@ -25,6 +30,7 @@
         else {
             document.write('el número más alto es el ' + numero3);
         }
+        //Finalmente se muestra el numero más alto tras realizar la comparación
     </script>
 </head>
 
