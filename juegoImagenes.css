@@ -1,0 +1,10 @@
+td {
+    width: 300px;
+    cursor: pointer;
+    border:1px solid black;
+}
+
+td img {
+    width: 300px; 
+    object-fit: contain;
+}
