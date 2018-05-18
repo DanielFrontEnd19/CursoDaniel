@@ -1,26 +1,45 @@
-var array_nombres = new Array;
+window.onload = inicia;
+var array_datos;
 
-function addNombre(){
-    var nombre = 0;
-    var nombre = document.getElementById("introduce").value;
+function inicia ()
+{
+    array_datos = new Array();// creo el Array con texto vacío
+}
 
-    array_nombres.push(introduce);
-    console.log(array_nombres);
+function obtenerTexto ()
+{
+    var texto = ''; 
+        texto = document.getElementById("texto").value;
+    return texto;
+}
+function insertarFila (texto)
+{
+    var tabla = document.getElementById("tabla");//obtengo referencia a la tabla
+    var nueva_fila = document.createElement("TR");//creo la fila
+    
+    var columna = document.createElement("TD");//creo la columna
+    columna.innerHTML = texto;//pongo el texto a la columna
 
-    var tablelista = document.getElementById("tableLista");
-    var nueva_fila = document.createElement("TR");
-    var columna = document.createElement("TD");
-
-    columna.innerHTML = introduce;
-    nueva_fila.appendChild(columna);
-    tablelista.appendChild(nueva_fila);
-
-    limpiar();
-
+    nueva_fila.appendChild(columna);//añado la columna a la fila
+    tabla.appendChild(nueva_fila);//añado la fila a la columna
+}
+function guardarArray (text)
+{
+    //meto en el array
+    array_datos.push(text);
+    console.log(array_datos);
 }
 
 function limpiar() {
-    document.getElementById("introduce").value = "";
-    document.getElementById('introduce').focus();
+    document.getElementById("texto").value = "";
+    document.getElementById('texto').focus();
 }
 
+function insertar() {
+    
+    var texto = obtenerTexto();
+    guardarArray (texto);
+    insertarFila(texto);
+    limpiar();
+
+}
