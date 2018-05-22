@@ -1,9 +1,11 @@
 window.onload = inicia;
 var array_datos;
+var numero;
 
 function inicia ()
 {
     array_datos = new Array();// creo el Array con texto vacío
+    numero = 0;
 }
 
 function obtenerTexto ()
@@ -30,6 +32,8 @@ function insertarFila (texto)
     columna.addEventListener('click', filaTocada);
 
     nueva_fila.appendChild(columna);//añado la columna a la fila
+    nueva_fila.id = numero;
+    numero = numero+1;
     tabla.appendChild(nueva_fila);//añado la fila a la columna
 }
 function guardarArray (text)
@@ -51,4 +55,7 @@ function insertar() {
     insertarFila(texto);
     limpiar();
 
+}
+function borrar(){
+    array_datos.splice(0,1);
 }
