@@ -5,15 +5,23 @@
         WEB CON JS
     </title>
     <link rel="stylesheet" type="text/css" href="estilo2.css">
+    <script src= "https://albert-gonzalez.github.io/easytimer.js/dist/easytimer.min.js"></script> 
     <script language="javascript">
-    src= "js/temporizador.js" 
+    
         window.onload = iniciarTablero;
         var imagen_tocada = false;
         var primer_img_tocada; var segunda_imagen_tocada;
         var num_aciertos = 0;//representa el número de aciertos que lleva el usuario
         const TOTAL_ACIERTOS = 2;//número de aciertos totales para dar por concluido el juego
-
         function iniciarTablero() {
+            var timerInstance = new Timer();
+            var timer = new Timer();
+            var timer = new Timer();
+timer.start();
+timer.addEventListener('secondsUpdated', function (e) {
+    $('#basicUsage').html(timer.getTimeValues().toString());
+});
+            console.log ("hola" + timer);
             console.log("Inicia Tablero . . .");
             //Asignar los listeners
             var td_actual;
