@@ -9,15 +9,6 @@
     <script>
         var xmlHttp = new XMLHttpRequest();
         const DIR_SERV = "http://10.1.2.10:8080/appwebprofe/RegistrarPersona"
-        function procesarEvento() {
-
-            console.log("Procesar eventos invocados" + xmlHttp.readyState);
-            if (xmlHttp.readyState==4){
-                console.log (xmlHttp.responseText);
-            }
-            //cuando este valga 4 procesamos el mensaje http de respuesta
-        }
-
         function enviar_Formulario() {
             var nombre = document.getElementById("nombre").value;
             var edad = document.getElementById("edad").value;
@@ -33,14 +24,35 @@
 
             var persona_json = JSON.stringify(persona);
             console.log(persona_json);
-            
+
 
             //Preparo llamada
             xmlHttp.onreadystatechange = procesarEvento;
             xmlHttp.open('POST', DIR_SERV, true);
             xmlHttp.setRequestHeader('Content-Type', 'application/json'); //esto es el tipo de contenido como el mime identifica el contenido que recibe
             xmlHttp.send(JSON.stringify(persona_json)); // esto es el cuerpo del mensaje
-            return false;
+            return xmlHttp.responseText;
+        }
+
+        function procesarEvento() {
+
+            console.log("Procesar eventos invocados" + xmlHttp.readyState);
+            if (xmlHttp.readyState == 4) {
+                console.log(xmlHttp.responseText);
+                console.log("STATUS" + xmlHttp.status);
+                if (xmlHttp.status == 200) {
+                    console.log("Exito");
+                    JSON.parse (xmlHttp.responseText);
+                    var mensaje_respuesta = JSON.parse (xmlHttp.responseText);
+                    console.log (mensaje_respuesta.nombre);
+                    console.log (mensaje_respuesta.saludo);
+                }
+                else {
+                    console.log("Error");
+
+                }
+            }
+            //cuando este valga 4 procesamos el mensaje http de respuesta
         }
     </script>
 </head>
