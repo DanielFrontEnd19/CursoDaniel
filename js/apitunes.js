@@ -1,8 +1,9 @@
+//declaramos variables globales (los vamos a usar en varios sitios)
 var xmlHttp;
 var url; 
 var lista;
 var tabla;
-
+//cargamos
 onload = inicio;
 
 function inicio(){
@@ -11,7 +12,7 @@ function inicio(){
 }
 
 function procesarEventosRecibir(){
-    if  (xmlHttp.readyState == 4 && xmlHttp.status == 200){
+    if  (xmlHttp.readyState == 4 && xmlHttp.status == 200){ //si 
     lista = xmlHttp.responseText; 
     lista = JSON.parse(lista);
     lista = lista.results;
@@ -23,7 +24,7 @@ function procesarEventosRecibir(){
     } 
 }
 
-function obtenerListaRemota(){
+function obtenerListaRemota(){//pedir una lista del servidor
     buscando();
     xmlHttp.onreadystatechange = procesarEventosRecibir;
     xmlHttp.open('GET', url, true); 
