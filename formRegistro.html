@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var xmlHttp = new XMLHttpRequest();
+        const DIRECCION = "http://10.1.2.10:8080/appwebprofe/Login";
+        const EXPRESION_REGULAR_USUARIO_MAIL = /^\w{6,}$/; //El mail y el usuario deben tener al menos 6 caracteres formado por letras, números o guiones bajos
+        const EXPRESION_REGULAR_EMAIL = /^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+        const EXPRESION_REGULAR_WEB = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+        const EXPRESION_REGULAR_TELEFONO = /^\+\d{7,15}$/;
+        const EXPRESION_REGULAR_PWD = /^\w{6,15}$/;
+
+        var patron_usuario = new RegExp(EXPRESION_REGULAR_USUARIO_MAIL);
+        var patron_mail = new RegExp(EXPRESION_REGULAR_EMAIL);
+        var patron_anuncio = new RegExp(EXPRESION_REGULAR_WEB);
+        var patron_telefono = new RegExp(EXPRESION_REGULAR_TELEFONO);
+
+        var correo_val = patron_mail.test(email);
+        var usuario_val = patron_usuario.test(nombre);
+        var telefono_val = patron_telefono.test(telf);
+        var anuncio_val = patron_anuncio.test(anuncio);
+
+        var nombre = document.getElementById("nombre").value = "";
+        var email = document.getElementById("email").value = "";
+        var contraseña = document.getElementById("contraseña").value = "";
+        var recontraseña = document.getElementById("recontraseña").value = "";
+
+        function comprobarNombre() {
+            var nombre = document.getElementById("nombre").value;
+            if (!(EXPRESION_REGULAR_USUARIO_MAIL.test(nombre))) {
+                return false;
+            }
+        }
+        function comprobarEmail() {
+            var email = document.getElementById("email").value;
+            if (!(EXPRESION_REGULAR_EMAIL.test(email))) {
+                return false;
+            }
+        }
+        function comprobarContraseña() {
+            var contraseña = document.getElementById("contraseña").value;
+            if (!(EXPRESION_REGULAR_PWD.test(contraseña))) {
+                return false;
+            }
+        }
+        function comprobarReContraseña() {
+            var recontraseña = document.getElementById("recontraseña").value;
+            if (!(EXPRESION_REGULAR_PWD.test(recontraseña))) {
+                return false;
+            }
+        }
+        function validar() {
+            comprobarNombre;
+            comprobarEmail;
+            comprobarContraseña;
+            comprobarReContraseña;
+        }
+        function limpiar() {
+            document.getElementById("nombre").value = "";
+            document.getElementById("nombre").focus;
+            document.getElementById("email").value = "";
+            document.getElementById("email").focus;
+            document.getElementById("contraseña").value = "";
+            document.getElementById("contraseña").focus;
+            document.getElementById("recontraseña").value = "";
+            document.getElementById("recontraseña").focus;
+        }
+        function login() {
+            if (xmlHttp.readyState == 4) {
+                console.log("ha vuelto");
+                if (xmlHttp.status == 200) {
+                    console.log("ha vuelto BIEN" + xmlHttp.responseText);
+                }
+                else {
+                    console.log("ha vuelto MAL" + xmlHttp.responseText);
+                }
+            }
+        }
+        function enviarDatos() {
+            var texto = document.getElementById('original')
+            var resultado = {
+                nombre: nombre,
+                email: email,
+                contraseña: contraseña
+            }
+            var resultado_json = JSON.stringify(resultado);
+            xmlHttp.onreadystatechange = login;
+            xmlHttp.open('POST', DIRECCION, true);
+            xmlHttp.setRequestHeader('Content-Type', 'application/json; charset= UFT-8');
+            xmlHttp.send(resultado_json);
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <div>
+        <form>
+            <fieldset>
+                <!--le damos un nombre al marco-->
+                <legend>Regístrate</legend>
+                <br> Nombre:
+                <input type="text" required="required" id="nombre" value="Introduce tu nombre">
+                <br>
+                <br> Email:
+                <input type="email" id="email" required="required" value="Introduce tu email">
+                <br>
+                <br> Contraseña:
+                <input type="text" id="contraseña" required="required" value="Contraseña">
+                <br>
+                <br> Repita contraseña:
+                <input type="text" id="recontraseña" required="required" value="Repita su contraseña">
+                <br>
+                <br>
+                <button onclick="validar(), enviar()">Enviar</button>
+                <button onclick="limpiar()">Limpiar</button>
+            </fieldset>
+        </form>
+    </div>
+</body>
+
+</html>
