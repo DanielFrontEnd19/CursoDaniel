@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+        window.onload= CargaMenuSelect;
+        //hago select departamentos
+        // Detectar evento cambio select de departamento
+        //Get CargarTrabajadores ? departamento = n;
+        //hago select trabajadores
+        const DIRECCION = "http://10.1.2.10:8080/appwebprofe/CargaMenuSelect";
+        const DIRECCION2 = "http://10.1.2.10:8080/appwebprofe/CargarTrabajadores?dpto=30";
+        var xmlHttp = new XMLHttpRequest();
+
+        var departamento = {
+            numero: "",
+            nombre: "",
+            datosDepartamento: function () {
+                return this.numero + " " + this.nombre;
+            }
+        };
+        
+        function dibujarLista(){
+            if (xmlHttp.readyState == 4) {
+                console.log("ha vuelto");
+                if (xmlHttp.status == 200) {
+                    console.log("ha vuelto BIEN" + xmlHttp.responseText);
+                }
+                else {
+                    console.log("ha vuelto MAL" + xmlHttp.responseText);
+                }
+            }
+        }
+        
+        var departamento_json = JSON.stringify(departamento);
+            xmlHttp.onreadystatechange = dibujarLista;
+            xmlHttp.open('GET', DIRECCION, true);
+            xmlHttp.setRequestHeader('Content-Type', 'application/json; charset= UFT-8');
+            xmlHttp.send(departamento_json);
+    </script>
+</head>
+
+<body>
+    <select>
+        <option id="finanzas" value="finanzas">Finanzas</option>
+        <option id="recursos humanos" value="recursos humanos">Recursos Humanos</option>
+        <option id="informatica" value="informatica">Informatica</option>
+        <option id="marketing" value="marketing">Marketing</option>
+    </select>
+
+</body>
+
+</html>
