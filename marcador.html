@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+
+
+
+        window.onload = function () {
+            var xmlHttp = new XMLHttpRequest();
+            const DIRECCION = "http://10.1.2.10:8080/Marcador/ActualizarInfoPartido";
+            var lista_comentarios;
+            actualizarInfoPartido();
+        };
+
+        function actualizarInfoPartido() {
+            xmlHttp.onreadystatechange = procesarInfoPartido;
+            xmlHttp.open('GET', DIRECCION, true);
+            xmlHttp.setRequestHeader('Content-Type', 'application/json');
+            xmlHttp.send(null);
+        };
+
+        function procesarInfoPartido() {    
+            var infoPartido;
+        
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+               var infoPartido = JSON.parse(xmlHttp.responseText);
+                console.log(infoPartido);
+                mostrarDatos();
+            }
+            else {
+                lista_comentarios = "mensaje de error";
+            }
+        };
+        function mostrarDatos() {
+            mostrarDatoGol();
+            console.log("ha llegado el comentario")
+        }
+        function mostrarDatoGol() {
+            var comentario = lista_comentarios[1].comentario;
+            var html_comentario = document.getElementById("comentarios").value = comentario;
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <a>Equipo Visitante</a>
+        <input type="text" name="visitante" id="equipoVisitante" size="3" maxlength="4">
+
+    </div>
+    <div>
+        <a>Equipo Local</a>
+        <input type="text" name="local" id="equipoLocal" size="3" maxlength="4">
+
+    </div>
+    <div>
+        <a>Minuto</a>
+        <input type="text" name="minuto" id="minuto" size="3" maxlength="4">
+
+    </div>
+    <div>
+        <a>Goleador</a>
+        <input type="text" name="goleador" id="goleador" size="3" maxlength="4">
+
+    </div>
+    <div>
+        <a>Eventos del partido</a>
+        <input type="text" name="comentario" id="comentarios">
+
+    </div>
+</body>
+
+</html>
